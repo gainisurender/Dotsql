@@ -11,9 +11,9 @@ public interface IUserRepository
     Task<List<User>> GetList();
 
 }
-public class UserRepository : IUserRepository
+public class UserRepository : BaseRepository, IUserRepository
 {
-    public UserRepository()
+    public UserRepository(IConfiguration config) : base(config)
     {
 
     }

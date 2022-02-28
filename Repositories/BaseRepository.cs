@@ -1,11 +1,17 @@
+using System.Data;
+using Dotsql.Settings;
+using Npgsql;
+
 namespace Dotsql.Repositories;
 
 public class BaseRepository
 {
-    public BaseRepository()
+    private readonly IConfiguration _configuration;
+    public BaseRepository(IConfiguration configuration)
     {
-
+        _configuration = configuration;
     }
-}
 
-// Go to run "services.msc" -> "PostgreSQL" 
+    public NpgsqlConnection NewConnection => new NpgsqlConnection(_configuration
+        .GetSection(nameof(PostgresSettings)).Get<PostgresSettings>().ConnectionString);
+}

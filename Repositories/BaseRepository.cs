@@ -3,6 +3,8 @@ using Dotsql.Settings;
 using Npgsql;
 
 namespace Dotsql.Repositories;
+public class ;
+public main;
 
 public class BaseRepository
 {
